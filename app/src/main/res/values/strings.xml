@@ -2,12 +2,16 @@
     <string name="app_name">treasurehunt</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Treasure Hunt</string>
+    <string name="nav_header_subtitle">Can you find it?</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Play</string>
-    <string name="menu_slideshow">Scores</string>
+    <string name="menu_gallery">Scores</string>
+    <string name="menu_slideshow">Play</string>
+    <string name="playing_field_button">Playing field button</string>
+    <string name="start_game">Start the game</string>
+    <string name="game_started">Find the treasure!</string>
+    <string name="reset_scores">Reset scores</string>
 </resources>
