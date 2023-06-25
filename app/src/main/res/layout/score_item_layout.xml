@@ -4,8 +4,12 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/score_list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="18dp"
+        android:textAlignment="center"
         android:background="@drawable/text_view_background">
     </TextView>
 

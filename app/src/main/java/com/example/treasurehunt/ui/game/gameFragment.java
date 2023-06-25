@@ -37,7 +37,7 @@ public class gameFragment extends Fragment {
         // Reference to the view model.
         gameViewModel gameViewModel =
                 new ViewModelProvider(this).get(gameViewModel.class);
-
+        gameViewModel.setContext(requireContext());
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         ConstraintLayout buttonContainer = binding.buttonContainer;
@@ -88,6 +88,9 @@ public class gameFragment extends Fragment {
                 if (active) {
                     gameButton.setEnabled(true);
                     gameButton.setText(R.string.start_game);
+                    for (int i = 1; i < buttonContainer.getChildCount(); i++) {
+                        buttonContainer.getChildAt(i).setEnabled(false);
+                    }
                     return;
                 }
                 // Reset the playing Buttons.

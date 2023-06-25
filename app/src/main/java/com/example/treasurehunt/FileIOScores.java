@@ -66,8 +66,6 @@ public class FileIOScores {
                          timeNumbers[0],timeNumbers[1],timeNumbers[2]);
                 ScoreItem item = new ScoreItem(score,d);
                 list.add(item);
-
-
             }
 
             in.close();
@@ -120,7 +118,11 @@ public class FileIOScores {
 
 
 
-    public  void writeFile( String fName, String content){
+    public  void writeFile( String fName, ArrayList<ScoreItem> scoreItems){
+        String content = "";
+        for (ScoreItem item: scoreItems) {
+            content = content + item.toString();
+        }
         try {
             PrintWriter p = new PrintWriter(
                     new OutputStreamWriter(
@@ -137,6 +139,7 @@ public class FileIOScores {
     }
 
     public void eraseContent(String fName) {
+        // Erase all content from file.
         try {
             PrintWriter p = new PrintWriter(
                     new OutputStreamWriter(
