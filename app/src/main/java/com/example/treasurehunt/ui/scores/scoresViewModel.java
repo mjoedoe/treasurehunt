@@ -26,6 +26,7 @@ public class scoresViewModel extends ViewModel {
     public void setContext(Context context) {
         this.context = context;
         this.fileIOScores = new FileIOScores((AppCompatActivity) this.context);
+        scoreItems.clear();
         scoreItems = fileIOScores.readScores(fname);
     }
 
