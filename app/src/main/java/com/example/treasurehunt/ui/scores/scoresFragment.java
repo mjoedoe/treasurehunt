@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 public class scoresFragment extends Fragment {
 
+    private ArrayList<String> content;
     private FragmentGalleryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -36,6 +37,8 @@ public class scoresFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
+        content = new ArrayList<>();
+
         ArrayList<String> content = scoresViewModel.getContentasString();
         scoreListAdapter adapter = new scoreListAdapter(content);
         recyclerView.setAdapter(adapter);
@@ -50,9 +53,7 @@ public class scoresFragment extends Fragment {
 
 
 
-        // MutableLiveData for score list.
-        final TextView textView = binding.textGallery;
-        scoresViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 

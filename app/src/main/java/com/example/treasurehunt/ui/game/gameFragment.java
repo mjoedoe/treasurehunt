@@ -1,6 +1,5 @@
 package com.example.treasurehunt.ui.game;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -8,9 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,10 +18,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.treasurehunt.R;
 import com.example.treasurehunt.databinding.FragmentSlideshowBinding;
-import com.google.android.material.slider.BaseOnChangeListener;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class gameFragment extends Fragment {
 
@@ -69,18 +61,6 @@ public class gameFragment extends Fragment {
         }
 
 
-        View.OnClickListener buttonStartListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Get the index of the clicked button
-                int buttonIndex = buttonContainer.indexOfChild(view);
-
-                // Call the gameViewModel.playing() method with the button index
-                gameViewModel.playing(buttonIndex);
-            }
-        };
-
-
         // Change ImageButtons based on gameState.
         gameViewModel.getGameActive().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
@@ -103,7 +83,17 @@ public class gameFragment extends Fragment {
                 gameButton.setText(R.string.game_started);
             }
         });
-        // Change ImageButtons based on gameState.
+
+        gameViewModel.getthirdGuess().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean thirdGuess) {
+                if (thirdGuess == Boolean.TRUE) {
+                    gameButton.setEnabled(true);
+                    gameButton.setText(R.string.start_game);
+                }
+            }
+        });
+        // Change ImageButtons Background
         gameViewModel.getButtonBackground().observe(getViewLifecycleOwner(), new Observer<Pair>() {
             @Override
             public void onChanged(Pair background) {

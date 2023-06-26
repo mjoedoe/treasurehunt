@@ -29,15 +29,18 @@ public class gameViewModel extends ViewModel {
     private int pirate;
     private ArrayList<ScoreItem> scoreItems;
     private MutableLiveData<Boolean> gameActive;
+    private MutableLiveData<Boolean> thirdGuess;
     private MutableLiveData<Pair> background;
 
     public gameViewModel() {
         background = new MutableLiveData<>();
         gameActive = new MutableLiveData<>();
+        thirdGuess = new MutableLiveData<>();
         gameState = 0;
         treasure = 0;
         pirate = 0;
 
+        thirdGuess.setValue(Boolean.FALSE);
         gameActive.setValue(Boolean.TRUE);
         background.setValue(new Pair<Integer, Integer>(1,R.drawable.ic_button_art));
 
@@ -51,6 +54,7 @@ public class gameViewModel extends ViewModel {
 
     public LiveData<Boolean> getGameActive(){return gameActive;}
 
+    public LiveData<Boolean> getthirdGuess(){return thirdGuess;}
 
     public void resetGame() {
         // Reset gameState and Buttons.
@@ -78,17 +82,20 @@ public class gameViewModel extends ViewModel {
             resetGame();
             gameState = 0;
 
+            thirdGuess.setValue(Boolean.FALSE);
+
         } else if (buttonIndex == treasure){
             background.setValue(new Pair<Integer, Integer>(buttonIndex,R.drawable.ic_button_art_treasure));
             resetGame();
             logGame();
             gameState = 0;
+            thirdGuess.setValue(Boolean.FALSE);
         } else {
             background.setValue(new Pair<Integer, Integer>(buttonIndex,R.drawable.ic_button_art_nothing));
         }
         gameState++;
-        if (gameState == 3) {
-
+        if (gameState == 4) {
+                thirdGuess.setValue(Boolean.TRUE);
         }
 
     }
